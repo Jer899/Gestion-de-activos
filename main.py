@@ -81,3 +81,47 @@ if __name__ == "__main__":
             break
         else:
             print("Opción no válida. Intenta de nuevo.")
+# main.py
+activos = {}
+
+def agregar_activo(id_activo, nombre, tipo, ubicacion):
+    activos[id_activo] = {
+        "nombre": nombre,
+        "tipo": tipo,
+        "ubicacion": ubicacion
+    }
+    print(f"Activo {nombre} agregado correctamente.")
+
+def editar_activo(id_activo, nuevo_nombre=None, nuevo_tipo=None, nueva_ubicacion=None):
+    if id_activo in activos:
+        if nuevo_nombre:
+            activos[id_activo]["nombre"] = nuevo_nombre
+        if nuevo_tipo:
+            activos[id_activo]["tipo"] = nuevo_tipo
+        if nueva_ubicacion:
+            activos[id_activo]["ubicacion"] = nueva_ubicacion
+        print(f"Activo {id_activo} editado correctamente.")
+    else:
+        print("El activo no existe.")
+
+def consultar_activo(id_activo):
+    if id_activo in activos:
+        print(f"Detalles del activo {id_activo}: {activos[id_activo]}")
+    else:
+        print("El activo no existe.")
+
+def eliminar_activo(id_activo):
+    if id_activo in activos:
+        del activos[id_activo]
+        print(f"Activo {id_activo} eliminado correctamente.")
+    else:
+        print("El activo no existe.")
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    agregar_activo(1, "Computadora", "Electrónica", "Oficina A")
+    consultar_activo(1)
+    editar_activo(1, nueva_ubicacion="Oficina B")
+    consultar_activo(1)
+    eliminar_activo(1)
+    consultar_activo(1)
